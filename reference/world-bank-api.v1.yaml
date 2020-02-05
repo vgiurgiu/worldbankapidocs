@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: World Bank API
+  version: '1.0'
+  description: "Get geographical and income information about the world's countries"
+  contact:
+    name: Just Me
+servers:
+  - url: 'http://api.worldbank.org/v2'
+paths:
+  /country:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  iso2Code:
+                    type: string
+                  name:
+                    type: string
+                  region:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      iso2code:
+                        type: string
+                      value:
+                        type: string
+                  adminregion:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      iso2code:
+                        type: string
+                      value:
+                        type: string
+                  incomeLevel:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      iso2code:
+                        type: string
+                      value:
+                        type: string
+                  lendingType:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      iso2code:
+                        type: string
+                      value:
+                        type: string
+                  capitalCity:
+                    type: string
+                  longitude:
+                    type: string
+                  latitude:
+                    type: string
+          headers: {}
+      operationId: get-country
+      description: Get country-level information by inserting the two letter country code
+      parameters:
+        - schema:
+            type: string
+            maxLength: 2
+            minLength: 2
+          in: query
+          name: country code
+          description: 'Input the two-letter country code for the country your are searching. Example: `ro`, `ag`'
+          required: true
+components:
+  schemas: {}
